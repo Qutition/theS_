@@ -1,0 +1,85 @@
+import random
+import string
+import os
+
+def generate_random_string(length=10):
+    """
+    Generates a random string of specified length.
+    
+    Parameters:
+    length (int): Length of the random string to generate.
+    
+    Returns:
+    str: A random string of the specified length.
+    """
+    letters = string.ascii_letters
+    return ''.join(random.choice(letters) for i in range(length))
+
+def write_random_strings_to_file(filename, num_strings=5, string_length=10):
+    """
+    Writes a specified number of random strings to a file.
+    
+    Parameters:
+    filename (str): The name of the file to write to.
+    num_strings (int): The number of random strings to generate and write to the file.
+    string_length (int): The length of each random string.
+    """
+    with open(filename, 'w') as file:
+        for _ in range(num_strings):
+            random_string = generate_random_string(string_length)
+            file.write(random_string + '\n')
+    print(f"Written {num_strings} random strings to {filename}")
+
+def read_file_and_print(filename):
+    """
+    Reads a file and prints its contents.
+    
+    Parameters:
+    filename (str): The name of the file to read from.
+    """
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            contents = file.read()
+            print(f"Contents of {filename}:\n{contents}")
+    else:
+        print(f"File {filename} does not exist.")
+
+def random_number_operations():
+    """
+    Performs random arithmetic operations on random numbers and prints the results.
+    """
+    num1 = random.randint(1, 100)
+    num2 = random.randint(1, 100)
+    
+    print(f"Random numbers: {num1}, {num2}")
+    
+    sum_result = num1 + num2
+    diff_result = num1 - num2
+    prod_result = num1 * num2
+    if num2 != 0:
+        div_result = num1 / num2
+    else:
+        div_result = "undefined (division by zero)"
+    
+    print(f"Sum: {sum_result}")
+    print(f"Difference: {diff_result}")
+    print(f"Product: {prod_result}")
+    print(f"Division: {div_result}")
+
+def main():
+    """
+    Main function to execute the random tasks.
+    """
+    filename = "random_strings.txt"
+    
+    # Write random strings to file
+    write_random_strings_to_file(filename)
+    
+    # Read and print file contents
+    read_file_and_print(filename)
+    
+    # Perform random number operations
+    random_number_operations()
+
+if __name__ == "__main__":
+    main()
