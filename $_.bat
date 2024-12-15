@@ -1,6 +1,4 @@
 @echo off
-echo compiled by Adv Bat to EXE
-cls
 title $_ \\-/pasta eggs\
 echo $_Launching Taskmgr
 title %random%%random%%random%
